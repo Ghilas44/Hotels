@@ -29,7 +29,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Réservations</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="index.php?gestion=reservations">Liste</a></li>
-                            <li><i class="fa fa-table"></i><a href="#A VOUS D'ECRIRE LE LIEN">Nouveau</a></li>
+                            <li><i class="fa fa-table"></i><a href="index.php?gestion=reservations&action=form_ajouter">Nouveau</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

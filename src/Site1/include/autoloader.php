@@ -32,7 +32,15 @@ class Autoloader{
             'mod_paymenttypes/',
             'mod_paymenttypes/controleur/',
             'mod_paymenttypes/modele/',
-            'mod_paymenttypes/vue/'
+            'mod_paymenttypes/vue/',
+            'mod_reservation/',
+            'mod_reservation/controleur/',
+            'mod_reservation/modele/',
+            'mod_reservation/vue/',
+            'mod_hotels/',
+            'mod_hotels/controleur/',
+            'mod_hotels/modele/',
+            'mod_hotels/vue/'
         );
 
         //Recherche dans chaque répertoire listé

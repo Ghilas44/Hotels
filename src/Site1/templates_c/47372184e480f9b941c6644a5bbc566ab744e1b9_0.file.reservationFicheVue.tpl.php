@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-13 20:58:26
-  from '/var/www/html/Site1/mod_paymenttypes/vue/paymenttypesFicheVue.tpl' */
+/* Smarty version 4.3.4, created on 2024-11-26 21:48:31
+  from '/var/www/html/Site1/mod_reservation/vue/reservationFicheVue.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673512f26317a2_69384141',
+  'unifunc' => 'content_6746422f47e7a4_90429746',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '44a6db952f4e879a92194e927cedee617acdecc1' => 
+    '47372184e480f9b941c6644a5bbc566ab744e1b9' => 
     array (
-      0 => '/var/www/html/Site1/mod_paymenttypes/vue/paymenttypesFicheVue.tpl',
-      1 => 1731531494,
+      0 => '/var/www/html/Site1/mod_reservation/vue/reservationFicheVue.tpl',
+      1 => 1732657707,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:public/header.tpl' => 1,
   ),
 ),false)) {
-function content_673512f26317a2_69384141 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6746422f47e7a4_90429746 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/Site1/include/libs/plugins/modifier.capitalize.php','function'=>'smarty_modifier_capitalize',),));
 ?>
 <!doctype html>
@@ -101,7 +101,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/Site1/include/
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="#index.php">Accueil</a></li>
-                        <li><a href="index.php?gestion=paymenttypes"><!-- Libelle -->types de paiements</a></li>
+                        <li><a href="index.php?gestion=reservations"><!-- Libelle -->Réservations</a></li>
                         <li class="active"><?php echo $_smarty_tpl->tpl_vars['titreVue']->value;?>
 </li>
                     </ol>
@@ -122,28 +122,22 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/Site1/include/
 </strong></div>
                         <form action="index.php" method="POST">
 
-                            <input type="hidden" name="gestion" value="paymenttypes">
+                            <input type="hidden" name="gestion" value="reservations">
                             <input type="hidden" name="action" value=<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
  >
-                            <input type="hidden" name="Payment" value=<?php echo $_smarty_tpl->tpl_vars['unPaiementtype']->value->getPayment();?>
+                            <input type="hidden" name="ResNo" value=<?php echo $_smarty_tpl->tpl_vars['reservation']->value->getResNo();?>
  >
                             <div class="card-body card-block">
-                            <?php if ($_smarty_tpl->tpl_vars['unPaiementtype']->value->getMessageErreur() != '') {?>
-                                <div  class="alert alert-danger" role="alert" >
-                                <?php echo $_smarty_tpl->tpl_vars['unPaiementtype']->value->getMessageErreur();?>
-
-                            </div>
-                            <?php }?>
-                            <?php if ($_smarty_tpl->tpl_vars['action']->value != 'ajouter') {?>
+                                                        <?php if ($_smarty_tpl->tpl_vars['action']->value != 'ajouter') {?>
                                 <!-- ICI CHAMPS DU FORMULAIRE -->
                                 <div class="form-group section-form">
                                 <label for="form-control-label">
                                     Identifiant :
                                 </label>
                                 <input type="text"
-                                       name="Payment"
+                                       name="ResNo"
                                        class="form-control"
-                                       value="<?php echo $_smarty_tpl->tpl_vars['unPaiementtype']->value->getPayment();?>
+                                       value="<?php echo $_smarty_tpl->tpl_vars['reservation']->value->getResNo();?>
 " <?php echo $_smarty_tpl->tpl_vars['readOnly']->value;?>
 >
                                        </input>
@@ -151,20 +145,102 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'/var/www/html/Site1/include/
                             <?php }?>
                                 <div class="form-group section-form">
                                 <label for="form-control-label">
-                                    Description :
+                                    Nom :
+                                </label>
+                                <input type="text"
+                                       name="LastName"
+                                       class="form-control"
+                                       value="<?php echo $_smarty_tpl->tpl_vars['reservation']->value->getLastName();?>
+" <?php echo $_smarty_tpl->tpl_vars['readOnlyTwo']->value;?>
+>
+                                </div>
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                    Prénom :
+                                </label>
+                                <input type="text"
+                                       name="FirstName"
+                                       class="form-control"
+                                       value="<?php echo $_smarty_tpl->tpl_vars['reservation']->value->getFirstName();?>
+" <?php echo $_smarty_tpl->tpl_vars['readOnlyTwo']->value;?>
+>
+                                </div>
+                                <?php if ($_smarty_tpl->tpl_vars['action']->value == 'consulter' || $_smarty_tpl->tpl_vars['action']->value == 'supprimer') {?>
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                        Hôtel :
+                                </label>
+                                <input type="text"
+                                           name="NameHotel"
+                                           class="form-control"
+                                           value="<?php echo $_smarty_tpl->tpl_vars['reservation']->value->getNameHotel();?>
+" <?php echo $_smarty_tpl->tpl_vars['readOnlyTwo']->value;?>
+>
+                                </div>
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                    Type de paiement :
                                 </label>
                                 <input type="text"
                                        name="Description"
                                        class="form-control"
-                                       value="<?php echo $_smarty_tpl->tpl_vars['unPaiementtype']->value->getDescription();?>
+                                       value="<?php echo $_smarty_tpl->tpl_vars['reservation']->value->getDescription();?>
 " <?php echo $_smarty_tpl->tpl_vars['readOnlyTwo']->value;?>
 >
                                 </div>
-
-                            </div>
+                                <?php } else { ?>
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                    Hôtel :
+                                </label>
+                                <select class="form-select" name="Hotel" id="Hotel">
+                                <option value="<?php echo $_smarty_tpl->tpl_vars['reservation']->value->getHotel();?>
+"><?php echo $_smarty_tpl->tpl_vars['reservation']->value->getNameHotel();?>
+</option>
+                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['hotels']->value, 'hotel');
+$_smarty_tpl->tpl_vars['hotel']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['hotel']->value) {
+$_smarty_tpl->tpl_vars['hotel']->do_else = false;
+?>
+                                        <?php if ($_smarty_tpl->tpl_vars['reservation']->value->getHotel() != $_smarty_tpl->tpl_vars['hotel']->value['Hotel']) {?>
+                                            <option value="<?php echo $_smarty_tpl->tpl_vars['hotel']->value['Hotel'];?>
+"><?php echo $_smarty_tpl->tpl_vars['hotel']->value['Name'];?>
+</option>
+                                        <?php }?>
+                                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                                    </select>
+                                </div>
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                    Type de paiement :
+                                </label>
+                                <select class="form-select" name="Payment" id="Payment">
+                                <option value="<?php echo $_smarty_tpl->tpl_vars['reservation']->value->getPayment();?>
+"><?php echo $_smarty_tpl->tpl_vars['reservation']->value->getDescription();?>
+</option>
+                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['paiementtypes']->value, 'paiementtype');
+$_smarty_tpl->tpl_vars['paiementtype']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['paiementtype']->value) {
+$_smarty_tpl->tpl_vars['paiementtype']->do_else = false;
+?>
+                                        <?php if ($_smarty_tpl->tpl_vars['reservation']->value->getPayment() != $_smarty_tpl->tpl_vars['paiementtype']->value['Payment']) {?>
+                                            <option value="<?php echo $_smarty_tpl->tpl_vars['paiementtype']->value['Payment'];?>
+"><?php echo $_smarty_tpl->tpl_vars['paiementtype']->value['Description'];?>
+</option>
+                                        <?php }?>
+                                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                                </select>
+                                </div>
+                                <?php }?>
                             <div class="card-body card-block">
                                 <div class="col-md-6"><input type='button' class="btn btn-submit" value='Retour'
-                                                             onclick='location.href = "index.php?gestion=paymenttypes"'></div>
+                                                             onclick='location.href = "index.php?gestion=reservations"'></div>
                                 <div class="col-md-6 ">                                
                                     <?php if ($_smarty_tpl->tpl_vars['action']->value != 'consulter') {?>
                                     <input type="submit"

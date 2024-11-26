@@ -30,9 +30,9 @@ class PaymenttypesControleur
         $valeurs = $this->oModele->getUnPaymenttype();
 
         $this->oVue->genererAffichageFiche($valeurs);
-
-
+        
     }
+
     public function form_modifier(){
 
         $valeurs = $this->oModele->getUnPaymenttype();
@@ -59,22 +59,35 @@ class PaymenttypesControleur
     }
 
     public function ajouter(){
+
         $controlePaymenttype = new PaymenttypesTable($this->parametre);
+        if (!empty($controlePaymenttype->getMessageErreur())) {
+            $this->oVue->genererAffichageFiche($controlePaymenttype);
+        } else {
         $this->oModele->addPaymenttypes($controlePaymenttype);
         $this->lister();
+        }
     }
 
     public function supprimer(){
         $controlePaymenttype = new PaymenttypesTable( $this->parametre);
-        
+
+        if (!empty($controlePaymenttype->getMessageErreur())) {
+            $this->oVue->genererAffichageFiche($controlePaymenttype);
+        } else {
         $this->oModele->deletePaymenttypes($controlePaymenttype);
         $this->lister();
+        }
     }
 
     public function modifier(){
         $controlePaymenttype = new PaymenttypesTable($this->parametre);
+        if (!empty($controlePaymenttype->getMessageErreur())) {
+            $this->oVue->genererAffichageFiche($controlePaymenttype);
+        } else {
         $this->oModele->updatePaymenttypes($controlePaymenttype);
         $this->lister();
+        }
     }
  
 }

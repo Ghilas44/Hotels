@@ -15,7 +15,6 @@ class Paymenttypes
     }
 
 
-
     public function choixAction(){
 
         if(isset($this->parametre['action'])){

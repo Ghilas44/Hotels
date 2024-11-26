@@ -1,8 +1,14 @@
 <?php
 
-class ReservationTable{ 
+class ReservationsTable {
+     
     private $ResNo = '';
     private $LastName = '';
+    private $FirstName = '';
+    private $Description = '';
+    private $NameHotel = '';
+    private $Hotel = '';
+    private $Payment = '';
 
     public function hydrater(array $row) {
 
@@ -38,5 +44,37 @@ class ReservationTable{
     public function setLastName($LastName) {
         $this->LastName = $LastName;
     }
-    
+    public function getFirstName(){
+        return $this->FirstName;
+    }
+    public function setFirstName($FirstName) {
+        $this->FirstName = $FirstName;
+    }
+    public function getDescription(){
+        return $this->Description;
+    }
+    public function setDescription($Description) {
+        $this->Description = $Description;
+    }
+    public function getNameHotel(){
+        return $this->NameHotel;
+    }
+    public function setNameHotel($NameHotel) {
+        $this->NameHotel = $NameHotel;
+    }
+
+    public function getHotel(){
+        return $this->Hotel;
+    }
+    public function setHotel($Hotel) {
+        $this->Hotel = $Hotel;
+    }
+
+    public function getPayment(){
+        return $this->Hotel;
+    }
+    public function setPayment($Payment) {
+        $this->Payment = $Payment;
+    }
+
 }

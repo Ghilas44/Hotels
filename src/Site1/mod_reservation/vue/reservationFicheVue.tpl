@@ -68,7 +68,7 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="#index.php">Accueil</a></li>
-                        <li><a href="index.php?gestion=paymenttypes"><!-- Libelle -->types de paiements</a></li>
+                        <li><a href="index.php?gestion=reservations"><!-- Libelle -->Réservations</a></li>
                         <li class="active">{$titreVue}</li>
                     </ol>
                 </div>
@@ -87,15 +87,15 @@
                         <div class="card-header"><strong>{$titrePage}</strong></div>
                         <form action="index.php" method="POST">
 
-                            <input type="hidden" name="gestion" value="paymenttypes">
+                            <input type="hidden" name="gestion" value="reservations">
                             <input type="hidden" name="action" value={$action} >
-                            <input type="hidden" name="Payment" value={$unPaiementtype->getPayment()} >
+                            <input type="hidden" name="ResNo" value={$reservation->getResNo()} >
                             <div class="card-body card-block">
-                            {if $unPaiementtype->getMessageErreur() neq ''}
+                            {* {if !empty $messageErreur}
                                 <div  class="alert alert-danger" role="alert" >
-                                {$unPaiementtype->getMessageErreur()}
+                                {$messageErreur}
                             </div>
-                            {/if}
+                            {/if} *}
                             {if $action neq 'ajouter'}
                                 <!-- ICI CHAMPS DU FORMULAIRE -->
                                 <div class="form-group section-form">
@@ -103,26 +103,80 @@
                                     Identifiant :
                                 </label>
                                 <input type="text"
-                                       name="Payment"
+                                       name="ResNo"
                                        class="form-control"
-                                       value="{$unPaiementtype->getPayment()}" {$readOnly}>
+                                       value="{$reservation->getResNo()}" {$readOnly}>
                                        </input>
                                 </div>
                             {/if}
                                 <div class="form-group section-form">
                                 <label for="form-control-label">
-                                    Description :
+                                    Nom :
+                                </label>
+                                <input type="text"
+                                       name="LastName"
+                                       class="form-control"
+                                       value="{$reservation->getLastName()}" {$readOnlyTwo}>
+                                </div>
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                    Prénom :
+                                </label>
+                                <input type="text"
+                                       name="FirstName"
+                                       class="form-control"
+                                       value="{$reservation->getFirstName()}" {$readOnlyTwo}>
+                                </div>
+                                {if $action eq 'consulter' or $action eq 'supprimer'}
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                        Hôtel :
+                                </label>
+                                <input type="text"
+                                           name="NameHotel"
+                                           class="form-control"
+                                           value="{$reservation->getNameHotel()}" {$readOnlyTwo}>
+                                </div>
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                    Type de paiement :
                                 </label>
                                 <input type="text"
                                        name="Description"
                                        class="form-control"
-                                       value="{$unPaiementtype->getDescription()}" {$readOnlyTwo}>
+                                       value="{$reservation->getDescription()}" {$readOnlyTwo}>
                                 </div>
-
-                            </div>
+                                {else}
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                    Hôtel :
+                                </label>
+                                <select class="form-select" name="Hotel" id="Hotel">
+                                <option value="{$reservation->getHotel()}">{$reservation->getNameHotel()}</option>
+                                    {foreach from=$hotels item=hotel}
+                                        {if $reservation->getHotel() != $hotel.Hotel}
+                                            <option value="{$hotel.Hotel}">{$hotel.Name}</option>
+                                        {/if}
+                                    {/foreach}
+                                    </select>
+                                </div>
+                                <div class="form-group section-form">
+                                <label for="form-control-label">
+                                    Type de paiement :
+                                </label>
+                                <select class="form-select" name="Payment" id="Payment">
+                                <option value="{$reservation->getPayment()}">{$reservation->getDescription()}</option>
+                                    {foreach from=$paiementtypes item=paiementtype}
+                                        {if $reservation->getPayment() != $paiementtype.Payment}
+                                            <option value="{$paiementtype.Payment}">{$paiementtype.Description}</option>
+                                        {/if}
+                                    {/foreach}
+                                </select>
+                                </div>
+                                {/if}
                             <div class="card-body card-block">
                                 <div class="col-md-6"><input type='button' class="btn btn-submit" value='Retour'
-                                                             onclick='location.href = "index.php?gestion=paymenttypes"'></div>
+                                                             onclick='location.href = "index.php?gestion=reservations"'></div>
                                 <div class="col-md-6 ">                                
                                     {if $action != 'consulter'}
                                     <input type="submit"

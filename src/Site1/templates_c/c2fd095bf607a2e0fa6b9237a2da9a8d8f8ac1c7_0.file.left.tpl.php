@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-15 13:52:59
+/* Smarty version 4.3.4, created on 2024-11-25 23:48:53
   from '/var/www/html/Site1/public/left.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_670e73bb92b576_75194092',
+  'unifunc' => 'content_67450ce55df4e0_62106827',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c2fd095bf607a2e0fa6b9237a2da9a8d8f8ac1c7' => 
     array (
       0 => '/var/www/html/Site1/public/left.tpl',
-      1 => 1729000230,
+      1 => 1732578531,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670e73bb92b576_75194092 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67450ce55df4e0_62106827 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
@@ -52,7 +52,7 @@ function content_670e73bb92b576_75194092 (Smarty_Internal_Template $_smarty_tpl)
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Réservations</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="index.php?gestion=reservations">Liste</a></li>
-                            <li><i class="fa fa-table"></i><a href="#A VOUS D'ECRIRE LE LIEN">Nouveau</a></li>
+                            <li><i class="fa fa-table"></i><a href="index.php?gestion=reservations&action=form_ajouter">Nouveau</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

@@ -1,7 +1,7 @@
 <?php
 
 
-class PaymenttypesVue
+class HotelsVue
 {
 
     private $parametre = array(); //tableau
@@ -26,15 +26,15 @@ class PaymenttypesVue
     }
 
 
-    public function genererAffichagePaymenttypes($valeurs){
+    public function genererAffichageHotels($valeurs){
 
         $this->chargementValeurs();
 
         $this->tpl->assign('titrePage', 'Liste des types de paiements');
 
-        $this->tpl->assign('listePaymenttypes', $valeurs);
+        $this->tpl->assign('listeHotels', $valeurs);
 
-        $this->tpl->display('mod_paymenttypes/vue/paymenttypesListeVue.tpl');
+        $this->tpl->display('mod_Hotels/vue/HotelsListeVue.tpl');
     }
 
     public function genererAffichageFiche($valeurs){
@@ -102,6 +102,6 @@ class PaymenttypesVue
 
             break;
         }
-        $this->tpl->display('mod_paymenttypes/vue/paymenttypesFicheVue.tpl');
+        $this->tpl->display('mod_Hotels/vue/HotelsFicheVue.tpl');
     }
 }

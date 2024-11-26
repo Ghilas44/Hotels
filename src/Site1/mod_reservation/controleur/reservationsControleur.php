@@ -14,10 +14,54 @@ Class ReservationsControleur{
         $this->oVue = new ReservationsVue($this->parametre);
     }
 
-    public function liste(){
+    public function lister(){
         $valeurs = $this->oModele->getListeReservations();
-        
-        $this->oVue->genererAffichageReservations( $valeurs);
+        // var_dump($valeurs);
+        // exit;
+        $this->oVue->genererAffichageReservations($valeurs);
     }
 
+    public function form_consulter(){
+
+        $valeurs = $this->oModele->getUneReservation();
+        $hotels = $this->oModele->getListeHotels();
+        $paiementtypes = $this->oModele->getListePaiementtypes();
+        var_dump ($paiementtypes);
+        exit;
+        $this->oVue->genererAffichageFiche($valeurs, $hotels, $paiementtypes);
+        
+    }
+
+    public function form_modifier(){
+
+        $valeurs = $this->oModele->getUneReservation();
+
+        $hotels = $this->oModele->getListeHotels();
+
+        $paiementtypes = $this->oModele->getListePaiementtypes();
+
+        $this->oVue->genererAffichageFiche($valeurs, $hotels, $paiementtypes);
+    }
+
+    public function form_supprimer(){
+
+        $valeurs = $this->oModele->getUneReservation();
+
+        $hotels = $this->oModele->getListeHotels();
+
+        $paiementtypes = $this->oModele->getListePaiementtypes();
+
+        $this->oVue->genererAffichageFiche($valeurs, $hotels, $paiementtypes);
+
+    }
+
+    
+    public function form_ajouter(){
+
+
+        $prepareReservations = new ReservationsTable();
+        // $this->oModele->getListeHotels();
+        $this->oVue->genererAffichageFiche($prepareReservations);
+
+    }
 }

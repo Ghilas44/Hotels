@@ -8,7 +8,7 @@ class PaymenttypesTable
     // 1 déclarer les propriétés (attributs)
     private $Payment = "";
     private $Description = "";
-
+    private $messageErreur = "";
 
     // 2 importer la méthode hydrater !
     public function hydrater(array $row) {
@@ -43,6 +43,9 @@ class PaymenttypesTable
         return $this->Payment;
     }
 
+    public function getMessageErreur(){
+        return $this->messageErreur;
+    }
     /**
      * @param string $Payment
      */
@@ -51,6 +54,10 @@ class PaymenttypesTable
         $this->Payment = $Payment;
     }
 
+    public function SetMessageErreur($messageErreur){
+        $this->messageErreur .= $messageErreur; // Concatenation avec l'attribut
+    }
+    
     /**
      * @return string
      */
@@ -64,7 +71,15 @@ class PaymenttypesTable
      */
     public function setDescription($Description)
     {
-        $this->Description = $Description;
+        if (empty($Description) || ctype_space(strval($Description))) {
+
+            $this->SetMessageErreur("La description est obligatoire.");
+            // echo $this->messageErreur;
+            // exit;
+        } else {
+            
+            $this->Description = $Description;
+        }
     }
 
 

@@ -1,15 +1,19 @@
 <?php
-class Reservations 
+
+
+class Hotels
 {
-    private $parametre = []; //tableau
+
+    private $parametre = array(); //tableau
     private $oControleur; // Object
-    
+
     public function __construct($parametre){
 
         $this->parametre = $parametre;
 
-        $this->oControleur = new ReservationsControleur($parametre);
+        $this->oControleur = new HotelsControleur($parametre);
     }
+
 
     public function choixAction(){
 
@@ -52,4 +56,5 @@ class Reservations
         }
 
     }
+
 }
